@@ -1,0 +1,43 @@
+/* stocktable.css */
+.stock-table {
+  width: 70%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  font-family: Arial, sans-serif;
+}
+
+ .stock-table td {
+  border: 1px solid #ddd;
+  padding: 7px;
+  text-align: center; /* Center the text */
+}
+
+.stock-table th{
+  border: 1px solid #ddd;
+  padding: 9px;
+  text-align: center; /* Center the text */
+}
+
+.stock-table th {
+  background-color: #0077be;
+  color: white;
+  font-weight: bold;
+}
+
+.stock-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.stock-table tr:hover {
+  background-color: #f0f0f0;
+}
+
+@media (max-width: 600px) {
+  .stock-table {
+    font-size: 14px;
+  }
+  
+  .stock-table th, .stock-table td {
+    padding: 8px;
+  }
+}

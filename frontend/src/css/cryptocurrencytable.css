@@ -1,0 +1,39 @@
+.cryptocurrency-table {
+  width: 70%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  font-family: Arial, sans-serif;
+}
+
+.cryptocurrency-table td {
+  border: 1px solid #ddd;
+  padding: 7px;
+  text-align: center;
+}
+
+.cryptocurrency-table th {
+  border: 1px solid #ddd;
+  padding: 9px;
+  text-align: center;
+  background-color: #0077be;
+  color: white;
+  font-weight: bold;
+}
+
+.cryptocurrency-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.cryptocurrency-table tr:hover {
+  background-color: #f0f0f0;
+}
+
+@media (max-width: 600px) {
+  .cryptocurrency-table {
+    font-size: 14px;
+  }
+  
+  .cryptocurrency-table th, .cryptocurrency-table td {
+    padding: 8px;
+  }
+}

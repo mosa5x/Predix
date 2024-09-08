@@ -1,28 +1,45 @@
-# setup services 
-version: '3'
-
 services:
-  djangoserver:
-    container_name: backend
-    build: .
+  backend:
+    build: ./backend
     command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend:/app
     ports:
       - "8000:8000"
-    volumes:
-      - .:/app
-
-
-  redis:
-    image: redis:latest
-    container_name: redis
-
-
-  celery:
-    container_name: celery
-    build: .
-    command: celery -A project worker -l INFO 
-    restart: always 
     depends_on:
       - redis
 
-    
+  frontend:
+    build: ./frontend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+
+  redis:
+    image: redis:latest
+
+  celery:
+    build: ./backend
+    command: celery -A project worker -l INFO
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - redis
+
+  celery-beat:
+    build: ./backend
+    command: celery -A project beat -l INFO
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - redis
+      - celery
+
+  selenium:
+    image: selenium/standalone-chrome
+    ports:
+      - "4444:4444"

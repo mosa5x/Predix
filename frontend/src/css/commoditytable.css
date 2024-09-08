@@ -1,0 +1,40 @@
+/* commoditytable.css */
+.commodity-table {
+  width: 70%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  font-family: Arial, sans-serif;
+}
+
+.commodity-table td {
+  border: 1px solid #ddd;
+  padding: 7px;
+  text-align: center;
+}
+
+.commodity-table th {
+  border: 1px solid #ddd;
+  padding: 9px;
+  text-align: center;
+  background-color: #0077be;
+  color: white;
+  font-weight: bold;
+}
+
+.commodity-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.commodity-table tr:hover {
+  background-color: #f0f0f0;
+}
+
+@media (max-width: 600px) {
+  .commodity-table {
+    font-size: 14px;
+  }
+  
+  .commodity-table th, .commodity-table td {
+    padding: 8px;
+  }
+}
