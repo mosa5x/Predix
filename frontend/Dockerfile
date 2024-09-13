@@ -8,7 +8,8 @@ RUN npm install axios
 RUN npm install @babel/plugin-proposal-private-property-in-object --save-dev
 RUN npm install react-router-dom
 
-COPY . .
+COPY --chown=node:node . .
 USER node
-RUN mkdir -p /app/node_modules/.cache && chown -R node:node /app/node_modules/.cache
+RUN mkdir -p /app/node_modules/.cache
+
 CMD ["npm", "start"]
