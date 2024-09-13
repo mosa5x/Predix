@@ -6,7 +6,9 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
-RUN chown -R node:node /app
+
+RUN mkdir -p /app/node_modules/.cache && chown -R node:node /app
+
 USER node
 
 CMD ["npm", "start"]
