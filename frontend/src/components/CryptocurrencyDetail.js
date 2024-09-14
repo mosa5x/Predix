@@ -24,7 +24,7 @@ const CryptocurrencyDetail = () => {
     const fetchCryptoData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://157.175.165.180:8000/api/cryptocurrencies/${cryptoId}/`);
+        const response = await axios.get(`http://157.175.203.205:8000/api/cryptocurrencies/${cryptoId}/`);
         setCryptoData(response.data);
         setLoading(false);
       } catch (error) {

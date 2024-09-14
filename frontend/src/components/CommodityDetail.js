@@ -26,7 +26,7 @@ const CommodityDetail = () => {
     const fetchCommodityData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://157.175.165.180:8000/api/commodities/${commodityId}/`);
+        const response = await axios.get(`http://157.175.203.205:8000/api/commodities/${commodityId}/`);
         setCommodityData(response.data);
         setLoading(false);
       } catch (error) {
