@@ -11,7 +11,6 @@ import '../css/CommodityList.css';
 import '../css/CryptocurrencyList.css';
 
 const ARABIC_STOCK_NAMES = {
-  'apple': 'آبل',
   'amazon': 'أمازون',
   'microsoft': 'مايكروسوفت',
   'facebook': 'فيسبوك',
@@ -34,7 +33,9 @@ const ARABIC_STOCK_NAMES = {
   'intc-stock': 'إنتل',
   'dell-stock': 'ديل',
   'adbe-stock': 'أدوبي',
-  'abnb-stock': 'إير بي إن بي'
+  'abnb-stock': 'إير بي إن بي',
+  'apple': 'آبل',
+
 };
 
 const StockDetail = () => {

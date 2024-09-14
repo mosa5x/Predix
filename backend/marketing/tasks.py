@@ -16,7 +16,6 @@ from typing import Dict
 logger = get_task_logger(__name__)
 
 ARABIC_STOCK_NAMES = {
-    'apple': 'آبل',
     'amazon': 'أمازون',
     'microsoft': 'مايكروسوفت',
     'facebook': 'فيسبوك',
@@ -39,17 +38,18 @@ ARABIC_STOCK_NAMES = {
     'intc-stock': 'إنتل',
     'dell-stock': 'ديل',
     'adbe-stock': 'أدوبي',
-    'abnb-stock': 'إير بي إن بي'
+    'abnb-stock': 'إير بي إن بي',
+    'apple': 'آبل',
+
+
 
 }
 
 
 ARABIC_NAMES = [
-    'آبل',
     'أمازون',
     'مايكروسوفت',
     'فيسبوك',
-    'مايكروسوفت',
     'نتفليكس',
     'نوكيا',
     'إنفيديا',
@@ -69,7 +69,9 @@ ARABIC_NAMES = [
     'إنتل',
     'ديل',
     'أدوبي',
-    'إير بي إن بي'
+    'إير بي إن بي',
+    'آبل',
+
 ]
 
 
@@ -112,6 +114,14 @@ def translate_forecast(text, stock_name):
     translated_sentences = []
     
     for sentence in sentences:
+
+        aramco_match = re.match(r'(\w+) stock closed at ([\d.]+) Riyals the previous day\. The stock is traded on (\w+) Exchange\.', text)
+        if aramco_match:
+            stock, price, exchange = aramco_match.groups()
+            arabic_stock_name = ARABIC_STOCK_NAMES.get(stock.lower(), stock)
+            arabic_exchange = "السوق السعودي" if exchange.lower() == "saudi" else exchange
+            return f"أغلق سهم {arabic_stock_name} في اليوم السابق عند {price} ريال. يتم تداول السهم في {arabic_exchange}."
+
         
         
         closed_previous_match = re.match(r'(\w+) stock closed the previous day at \$(\d+(?:\.\d+)?), which is \$(\d+(?:\.\d+)?) (higher|lower) than 30 days ago and \$(\d+(?:\.\d+)?) (higher|lower) than 7 days ago', text)
@@ -216,7 +226,7 @@ def scrape_and_translate(stock):
     elements = {
         "date": "/html/body/div/div/div/div/main/article/div/strong",
         "closed_the_previous": "/html/body/div/div/div/div/main/article/div/p[1]",
-        "table": "/html/body/div/div/div/div/main/article/div/div[1]/div[1]/table",
+        "table": "/html/body/div/div/div/div/main/article/div/div[1]/div[1]/table/tbody",
         "p1": "/html/body/div/div/div/div/main/article/div/p[2]",
         "p2": "/html/body/div/div/div/div/main/article/div/p[3]",
         "p4": "/html/body/div/div/div/div/main/article/div/p[6]",
@@ -741,10 +751,10 @@ def scrape_all_commodities():
 def scrape_all_stocks():
     logger.info("Starting scrape_all_stocks task")
     log_current_time.delay()  # Log the time when the task starts
-    stocks = ['apple', 'amazon', 'microsoft', 'facebook', 'netflix', 'nokia', 'nvidia',
+    stocks = [ 'amazon', 'microsoft', 'facebook', 'netflix', 'nokia', 'nvidia',
                'paypal', 'pinterest', 'tesla', 'amd', 'alibaba', 'boeing', 'disney', 'ibm' , 'aramco',
                'v-stock','uber-stock','spot-stock', 'lcid-stock','intc-stock','dell-stock','adbe-stock',
-               'abnb-stock'
+               'abnb-stock', 'apple'
     ]
     for stock in stocks:
         scrape_and_translate.delay(stock)
@@ -754,10 +764,10 @@ def scrape_all_stocks():
 @shared_task
 def check_cache_contents():
     logger.info("Starting check_cache_contents task")
-    stocks = ['apple', 'amazon', 'microsoft', 'facebook', 'netflix', 'nokia', 'nvidia',
+    stocks = ['amazon', 'microsoft', 'facebook', 'netflix', 'nokia', 'nvidia',
                'paypal', 'pinterest', 'tesla', 'amd', 'alibaba', 'boeing', 'disney', 'ibm' , 'aramco',
                'v-stock','uber-stock','spot-stock', 'lcid-stock','intc-stock','dell-stock','adbe-stock',
-               'abnb-stock'
+               'abnb-stock', 'apple'
                  ]
     for stock in stocks:
         result = cache.get(f'latest_scrape_result_{stock}')
@@ -766,7 +776,6 @@ def check_cache_contents():
         else:
             logger.info(f"No cache content found for {stock}")
     logger.info("Finished checking cache contents")
-
 
 
 
