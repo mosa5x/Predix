@@ -12,7 +12,29 @@ import '../css/CryptocurrencyList.css';
 
 const ARABIC_STOCK_NAMES = {
   'apple': 'آبل',
-  // Add other stock names here
+  'amazon': 'أمازون',
+  'microsoft': 'مايكروسوفت',
+  'facebook': 'فيسبوك',
+  'netflix': 'نتفليكس',
+  'nokia': 'نوكيا',
+  'nvidia': 'إنفيديا',
+  'paypal': 'باي بال',
+  'pinterest': 'بينتيريست',
+  'tesla': 'تسلا',
+  'amd': 'إيه إم دي',
+  'alibaba': 'علي بابا',
+  'boeing': 'بوينغ',
+  'disney': 'ديزني',
+  'ibm': 'آي بي إم',
+  'aramco': 'أرامكو',
+  'v-stock': 'فيزا',
+  'uber-stock': 'أوبر',
+  'spot-stock': 'سبوتيفاي',
+  'lcid-stock': 'لوسيد',
+  'intc-stock': 'إنتل',
+  'dell-stock': 'ديل',
+  'adbe-stock': 'أدوبي',
+  'abnb-stock': 'إير بي إن بي'
 };
 
 const StockDetail = () => {

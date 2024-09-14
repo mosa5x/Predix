@@ -15,9 +15,11 @@ def get_stock_data(request, stock):
     return JsonResponse(result)
 
 def get_all_stocks(request):
-    stocks = [
-                'apple', 'amazon', 'microsoft', 'facebook', 'microsoft', 'netflix', 'nokia', 'nvidia', 'paypal', 'pinterest', 'tesla', 'amd', 'alibaba', 'boeing', 'disney', 'ibm'
-        ]
+    stocks = ['apple', 'amazon', 'microsoft', 'facebook', 'microsoft', 'netflix', 'nokia', 'nvidia',
+               'paypal', 'pinterest', 'tesla', 'amd', 'alibaba', 'boeing', 'disney', 'ibm' , 'aramco',
+               'v-stock','uber-stock','spot-stock', 'lcid-stock','intc-stock','dell-stock','adbe-stock',
+               'abnb-stock'
+    ]
     results = []
     for stock in stocks:
         result = cache.get(f'latest_scrape_result_{stock}', {})
@@ -29,9 +31,10 @@ def get_all_stocks(request):
     logger.info(f"Returning all stock data: {results}")
     return JsonResponse({'stocks': results})
 def get_stocks(request):
-    stocks = [
-        'apple', 'amazon', 'microsoft', 'facebook', 'netflix', 'nokia', 'nvidia', 
-        'paypal', 'pinterest', 'tesla', 'amd', 'alibaba', 'boeing', 'disney', 'ibm'
+    stocks = ['apple', 'amazon', 'microsoft', 'facebook', 'microsoft', 'netflix', 'nokia', 'nvidia',
+               'paypal', 'pinterest', 'tesla', 'amd', 'alibaba', 'boeing', 'disney', 'ibm' , 'aramco',
+               'v-stock','uber-stock','spot-stock', 'lcid-stock','intc-stock','dell-stock','adbe-stock',
+               'abnb-stock'
     ]
     arabic_names = [ARABIC_STOCK_NAMES.get(stock, stock) for stock in stocks]
     return JsonResponse({
