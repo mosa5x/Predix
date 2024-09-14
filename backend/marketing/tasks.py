@@ -741,7 +741,11 @@ def scrape_all_commodities():
 def scrape_all_stocks():
     logger.info("Starting scrape_all_stocks task")
     log_current_time.delay()  # Log the time when the task starts
-    stocks = ['apple', 'amazon'  ]
+    stocks = ['apple', 'amazon', 'microsoft', 'facebook', 'netflix', 'nokia', 'nvidia',
+               'paypal', 'pinterest', 'tesla', 'amd', 'alibaba', 'boeing', 'disney', 'ibm' , 'aramco',
+               'v-stock','uber-stock','spot-stock', 'lcid-stock','intc-stock','dell-stock','adbe-stock',
+               'abnb-stock'
+    ]
     for stock in stocks:
         scrape_and_translate.delay(stock)
         logger.info(f"Queued scraping task for {stock}")
@@ -750,7 +754,7 @@ def scrape_all_stocks():
 @shared_task
 def check_cache_contents():
     logger.info("Starting check_cache_contents task")
-    stocks = ['apple', 'amazon', 'microsoft', 'facebook', 'microsoft', 'netflix', 'nokia', 'nvidia',
+    stocks = ['apple', 'amazon', 'microsoft', 'facebook', 'netflix', 'nokia', 'nvidia',
                'paypal', 'pinterest', 'tesla', 'amd', 'alibaba', 'boeing', 'disney', 'ibm' , 'aramco',
                'v-stock','uber-stock','spot-stock', 'lcid-stock','intc-stock','dell-stock','adbe-stock',
                'abnb-stock'
