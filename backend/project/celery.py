@@ -28,15 +28,15 @@ app.conf.timezone = 'Asia/Baghdad'
 app.conf.beat_schedule = {
     'scrape-all-stocks-at-1am-iraq-time': {
         'task': 'marketing.tasks.scrape_all_stocks',
-        'schedule': crontab(hour=12, minute=15),
+        'schedule': crontab(hour=12, minute=45),
     },
     'scrape-all-commodities-at-am-iraq-time': {
         'task': 'marketing.tasks.scrape_all_commodities',
-        'schedule': crontab(hour=12, minute=15),
+        'schedule': crontab(hour=12, minute=45),
     },
     'scrape-all-cryptocurrencies-at-0am-iraq-time': {
         'task': 'marketing.tasks.scrape_all_cryptocurrencies',
-        'schedule': crontab(hour=12, minute=15),
+        'schedule': crontab(hour=12, minute=45),
     },
     'log-time-every-1-minutes': {
         'task': 'marketing.tasks.log_current_time',
