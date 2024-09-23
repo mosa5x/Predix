@@ -16,7 +16,7 @@ const CryptocurrencyList = () => {
     const fetchCryptocurrencies = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://157.175.203.205:8000/api/cryptocurrencylist/');
+        const response = await axios.get('http://157.175.166.6:8000/api/cryptocurrencylist/');
         console.log('API Response:', response.data); // Debugging line
         setCryptocurrencies(response.data.cryptocurrencies);
         setArabicNames(response.data.arabic_names);

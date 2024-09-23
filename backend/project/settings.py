@@ -3,10 +3,11 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 SECRET_KEY = 'django-insecure-fd-&$8af%)=d@iwk^-*ocoto14ka%3ke@3god891+=525g&ch7'
 
-DEBUG = True
-
+DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [

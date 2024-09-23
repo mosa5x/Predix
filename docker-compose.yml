@@ -1,11 +1,11 @@
+version: '3'
+
 services:
   backend:
     build: ./backend
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn project.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - ./backend:/app
-    ports:
-      - "8000:8000"
     depends_on:
       - redis
 
@@ -14,12 +14,8 @@ services:
     volumes:
       - ./frontend:/app
       - /app/node_modules
-    ports:
-      - "3000:3000"
     environment:
-      - NODE_ENV=development
-      - CHOKIDAR_USEPOLLING=true
-    user: node
+      - REACT_APP_API_URL=http://your_domain.com/api
 
   redis:
     image: redis:latest
@@ -45,3 +41,13 @@ services:
     image: selenium/standalone-chrome
     ports:
       - "4444:4444"
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - backend
+      - frontend
