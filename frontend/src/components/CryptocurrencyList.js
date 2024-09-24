@@ -16,7 +16,7 @@ const CryptocurrencyList = () => {
     const fetchCryptocurrencies = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://157.175.166.6:8000/api/cryptocurrencylist/');
+        const response = await axios.get('ec2-157-175-209-23.me-south-1.compute.amazonaws.com/api/cryptocurrencylist/');
         console.log('API Response:', response.data); // Debugging line
         setCryptocurrencies(response.data.cryptocurrencies);
         setArabicNames(response.data.arabic_names);
@@ -33,7 +33,7 @@ const CryptocurrencyList = () => {
 
   const fetchCryptoData = async (crypto) => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/cryptocurrencies/${crypto}/`);
+      const response = await axios.get(`ec2-157-175-209-23.me-south-1.compute.amazonaws.com/api/cryptocurrencies/${crypto}/`);
       setCryptoData(response.data);
       setSelectedCrypto(crypto);
     } catch (error) {

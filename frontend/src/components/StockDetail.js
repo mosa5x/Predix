@@ -48,7 +48,7 @@ const StockDetail = () => {
     const fetchStockData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http:157.175.166.6:8000/api/stocks/${stockId}/`);
+        const response = await axios.get(`ec2-157-175-209-23.me-south-1.compute.amazonaws.com/api/stocks/${stockId}/`);
         setStockData(response.data);
         setLoading(false);
       } catch (error) {
