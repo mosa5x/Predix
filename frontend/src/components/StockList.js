@@ -13,7 +13,7 @@ const StockList = () => {
     const fetchStocks = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('ec2-157-175-209-23.me-south-1.compute.amazonaws.com/api/stocklist/');
+        const response = await axios.get('http://157.175.209.23/api/stocklist/');
         setStocks(response.data.stocks);
         setArabicNames(response.data.arabic_names);
         setLoading(false);

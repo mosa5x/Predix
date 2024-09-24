@@ -26,7 +26,7 @@ const CommodityDetail = () => {
     const fetchCommodityData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`ec2-157-175-209-23.me-south-1.compute.amazonaws.com/api/commodities/${commodityId}/`);
+        const response = await axios.get(`http://157.175.209.23/api/commodities/${commodityId}/`);
         setCommodityData(response.data);
         setLoading(false);
       } catch (error) {
