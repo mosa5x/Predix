@@ -15,7 +15,7 @@ services:
       - ./frontend:/app
       - /app/node_modules
     environment:
-      - REACT_APP_API_URL=http://your_domain.com/api
+      - REACT_APP_API_URL=http://predix.site/api
 
   redis:
     image: redis:latest
