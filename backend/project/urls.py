@@ -5,8 +5,14 @@ from marketing.views import (
     get_commodities, get_commodity_data, get_all_commodities,
     get_cryptocurrencies, get_cryptocurrency_data, get_all_cryptocurrencies
 )
+from django.http import JsonResponse
+
+def api_root(request):
+    return JsonResponse({"message": "Welcome to the API"})
+
 
 urlpatterns = [
+    path('api/', api_root, name='api_root'),
     path('admin/', admin.site.urls),
     path('api/stocks/', get_all_stocks, name='get_all_stocks'),
     path('api/stocks/<str:stock>/', get_stock_data, name='get_stock_data'),

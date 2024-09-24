@@ -7,7 +7,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 SECRET_KEY = 'django-insecure-fd-&$8af%)=d@iwk^-*ocoto14ka%3ke@3god891+=525g&ch7'
 
-DEBUG = False
+DEBUG = True
+
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
