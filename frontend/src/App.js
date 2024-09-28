@@ -8,6 +8,7 @@ import CommodityDetail from './components/CommodityDetail';
 import CryptocurrencyList from './components/CryptocurrencyList';
 import CryptocurrencyDetail from './components/CryptocurrencyDetail';
 import ArabicLandingPage from './components/ArabicLandingPage';
+
 const App = () => {
   const [isHomeVisible, setHomeVisible] = useState(true);
 

@@ -1,14 +1,21 @@
 import React, { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../css/Header.css';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Header = ({ toggleHomeVisibility }) => {
   const navRef = useRef();
+  const navigate = useNavigate();
 
   const showNavbar = () => {
     navRef.current.classList.toggle('responsive_nav');
     toggleHomeVisibility(navRef.current.classList.contains('responsive_nav'));
+  };
+
+  const handleHomeClick = () => {
+    navRef.current.classList.remove('responsive_nav');
+    toggleHomeVisibility(false);
+    navigate('/');
   };
 
   return (
@@ -20,7 +27,7 @@ const Header = ({ toggleHomeVisibility }) => {
       </div>
       <nav ref={navRef}>
         <ul>
-          <li><Link to="/">الرئيسية</Link></li>
+          <li><button onClick={handleHomeClick}>الرئيسية</button></li>
           <button className="nav-btn nav-close-btn" onClick={showNavbar}>
             <FaTimes />
           </button>
