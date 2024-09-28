@@ -13,7 +13,7 @@ const StockList = () => {
     const fetchStocks = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://157.175.209.23/api/stocklist/');
+        const response = await axios.get('https://predix.site/api/stocklist/');
         setStocks(response.data.stocks);
         setArabicNames(response.data.arabic_names);
         setLoading(false);
