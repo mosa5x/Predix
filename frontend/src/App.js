@@ -36,3 +36,12 @@ const App = () => {
 };
 
 export default App;
+
+export const routes = [
+  { path: "/" },
+  { path: "/stock/:stockId" },
+  { path: "/commodities" },
+  { path: "/commodity/:commodityId" },
+  { path: "/cryptocurrencies" },
+  { path: "/cryptocurrency/:cryptoId" }
+];
