@@ -8,8 +8,7 @@ services:
       - ./backend:/app
     depends_on:
       - redis
-    environment:
-      - DJANGO_ALLOWED_HOSTS=localhost,predix.site,www.predix.site
+
 
   frontend:
     build: ./frontend
