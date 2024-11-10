@@ -13,7 +13,7 @@ const CommodityList = () => {
     const fetchCommodities = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://157.175.209.23/api/commoditylist/');
+        const response = await axios.get('http://157.175.146.63/api/commoditylist/');
         setCommodities(response.data.commodities);
         setArabicNames(response.data.arabic_names);
         setLoading(false);
